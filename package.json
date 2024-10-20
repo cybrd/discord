@@ -4,17 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "serverless deploy --verbose --debug=true --force"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.7.7",
     "typescript": "^5.6.3"
   },
   "dependencies": {
+    "cors": "^2.8.5",
     "discord-interactions": "^4.1.0",
     "discord.js": "^14.16.3",
     "dotenv": "^16.4.5",

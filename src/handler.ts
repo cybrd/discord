@@ -1,4 +1,6 @@
-import express from "express";
+import express, { json, urlencoded } from "express";
+import serverless from "serverless-http";
+import cors from "cors";
 import {
   InteractionResponseType,
   InteractionType,
@@ -15,6 +17,10 @@ import {
 config();
 
 const app = express();
+
+app.use(cors());
+app.use(urlencoded({ extended: false }));
+app.use(json({ limit: "50mb" }));
 
 const client = new Client({
   intents: [
@@ -43,6 +49,7 @@ app.post(
 
       if (name === "list-online") {
         console.log("client login start");
+
         client.login(process.env.TOKEN).then(() => {
           console.log("client login done");
 
@@ -78,6 +85,4 @@ app.post(
   }
 );
 
-app.listen(3000, () => {
-  console.log("listening");
-});
+export const index = serverless(app);
