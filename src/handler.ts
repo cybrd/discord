@@ -45,14 +45,12 @@ app.post(
       if (name === "list-online") {
         console.log("client login start");
 
-        client.login(process.env.TOKEN).then(() => {
-          console.log("client login done");
+        client.on("ready", () => {
+          console.log("client ready");
 
           const voiceChannel = client.channels.cache.get(channel.id);
           console.log(
             "voiceChannel",
-            process.env.TOKEN,
-            channel.id,
             voiceChannel,
             voiceChannel?.type,
             ChannelType.GuildVoice
@@ -76,6 +74,7 @@ app.post(
             });
           }
         });
+        client.login(process.env.TOKEN);
       } else {
         console.error(`unknown command: ${name}`);
         res.status(400).json({ error: "unknown command" });
