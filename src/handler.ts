@@ -51,6 +51,8 @@ app.post(
           const voiceChannel = client.channels.cache.get(channel.id);
           console.log(
             "voiceChannel",
+            process.env.TOKEN,
+            channel.id,
             voiceChannel,
             voiceChannel?.type,
             ChannelType.GuildVoice
