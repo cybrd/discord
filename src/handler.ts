@@ -45,9 +45,7 @@ app.post(
       if (name === "list-online") {
         console.log("client login start");
 
-        client.on("ready", () => {
-          console.log("client ready");
-
+        const run = () => {
           const voiceChannel = client.channels.cache.get(channel.id);
           console.log(
             "voiceChannel",
@@ -65,7 +63,7 @@ app.post(
               return x.nickname || x.user.globalName || x.user.username;
             });
 
-            console.log("sending namelist", nameList);
+            console.log("sending nameList", nameList);
             res.send({
               type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
               data: {
@@ -73,8 +71,17 @@ app.post(
               },
             });
           }
-        });
-        client.login(process.env.TOKEN);
+        };
+
+        if (client.isReady()) {
+          run();
+        } else {
+          client.on("ready", () => {
+            console.log("client ready");
+            run();
+          });
+          client.login(process.env.TOKEN);
+        }
       } else {
         console.error(`unknown command: ${name}`);
         res.status(400).json({ error: "unknown command" });
