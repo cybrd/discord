@@ -1,6 +1,5 @@
-import express, { json, urlencoded } from "express";
+import express from "express";
 import serverless from "serverless-http";
-import cors from "cors";
 import {
   InteractionResponseType,
   InteractionType,
@@ -17,10 +16,6 @@ import {
 config();
 
 const app = express();
-
-app.use(cors());
-app.use(urlencoded({ extended: false }));
-app.use(json({ limit: "50mb" }));
 
 const client = new Client({
   intents: [
