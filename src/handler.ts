@@ -59,6 +59,7 @@ app.post(
               return x.nickname || x.user.globalName || x.user.username;
             });
 
+            console.log("sending namelist", nameList);
             res.send({
               type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
               data: {
