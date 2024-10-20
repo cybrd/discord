@@ -6,7 +6,6 @@ import {
   GuildMember,
 } from "discord.js";
 import { config } from "dotenv";
-import moment from "moment";
 config();
 
 const client = new Client({
