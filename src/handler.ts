@@ -67,16 +67,14 @@ app.post(
             });
           }
         });
-        return;
+      } else {
+        console.error(`unknown command: ${name}`);
+        res.status(400).json({ error: "unknown command" });
       }
-
-      console.error(`unknown command: ${name}`);
-      res.status(400).json({ error: "unknown command" });
-      return;
+    } else {
+      console.error("unknown interaction type", type);
+      res.status(400).json({ error: "unknown interaction type" });
     }
-
-    console.error("unknown interaction type", type);
-    res.status(400).json({ error: "unknown interaction type" });
   }
 );
 
