@@ -49,6 +49,12 @@ app.post(
           console.log("client login done");
 
           const voiceChannel = client.channels.cache.get(channel.id);
+          console.log(
+            "voiceChannel",
+            voiceChannel,
+            voiceChannel?.type,
+            ChannelType.GuildVoice
+          );
           if (voiceChannel?.type === ChannelType.GuildVoice) {
             const members = voiceChannel?.members as Collection<
               string,
