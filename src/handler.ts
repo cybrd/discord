@@ -40,15 +40,14 @@ app.post(
     }
 
     if (type === InteractionType.APPLICATION_COMMAND) {
-      const { name } = data;
-
-      if (name === "list-online") {
+      if (data.name === "list-online") {
         console.log("client login start");
 
         const run = () => {
           const voiceChannel = client.channels.cache.get(channel.id);
           console.log(
             "voiceChannel",
+            channel.id,
             voiceChannel,
             voiceChannel?.type,
             ChannelType.GuildVoice
