@@ -1,9 +1,4 @@
-import {
-  CommandInteraction,
-  REST,
-  Routes,
-  SlashCommandBuilder,
-} from "discord.js";
+import { REST, Routes, SlashCommandBuilder } from "discord.js";
 import { config } from "dotenv";
 config();
 
@@ -13,7 +8,7 @@ rest
   .put(
     Routes.applicationGuildCommands(
       "1297160655413182524",
-      "162814851092054016"
+      "308721544589344779"
     ),
     {
       body: [
