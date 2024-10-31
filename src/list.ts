@@ -34,7 +34,7 @@ client.on("messageCreate", (message) => {
       const members = voiceChannel?.members as Collection<string, GuildMember>;
 
       const nameList = members.map((x) => {
-        return x.nickname || x.user.globalName || x.user.username;
+        return x.user.username;
       });
 
       message.reply(nameList.join("\n"));
